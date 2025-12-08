@@ -1,7 +1,7 @@
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 import { PricingProfile, CalculatedPrice } from '../models/pricing-profile.model';
-import { calculationService } from './calculation.service';
 import { productsService } from './products.service';
+import { calculationService } from './calculation.service';
 
 export class PricingService {
   private profiles: PricingProfile[] = [];
@@ -36,7 +36,7 @@ export class PricingService {
 
     const now = new Date().toISOString();
     const profile: PricingProfile = {
-      id: uuidv4(),
+      id: randomUUID(),  // Changed this line
       ...data,
       createdAt: now,
       updatedAt: now,
@@ -46,6 +46,7 @@ export class PricingService {
     return profile;
   }
 
+  // ... rest of the code stays the same
   updateProfile(id: string, data: Partial<Omit<PricingProfile, 'id' | 'createdAt'>>): PricingProfile {
     const index = this.profiles.findIndex((p) => p.id === id);
     if (index === -1) {
