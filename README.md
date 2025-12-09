@@ -519,10 +519,6 @@ app.use(cors({
 
 ---
 
-## 👥 Team FOBOH
-
-Developed as a take-home challenge for FOBOH.
-
 **Time Spent:** ~4 hours
 - Backend: 1.5 hours
 - Frontend: 1.5 hours
