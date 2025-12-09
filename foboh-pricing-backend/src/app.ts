@@ -1,5 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './config/swagger';
 import productsRoutes from './routes/products.routes';
 import pricingRoutes from './routes/pricing.routes';
 import referenceRoutes from './routes/reference.routes';
@@ -15,6 +17,12 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Swagger Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'FOBOH Pricing API Documentation',
+}));
+
 // Routes
 app.use('/api/products', productsRoutes);
 app.use('/api/pricing-profiles', pricingRoutes);
@@ -25,6 +33,7 @@ app.get('/', (req: Request, res: Response) => {
   res.json({
     message: 'FOBOH Pricing API',
     version: '1.0.0',
+    documentation: 'http://localhost:3001/api-docs',
     endpoints: {
       products: '/api/products',
       pricingProfiles: '/api/pricing-profiles',
