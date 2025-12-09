@@ -229,10 +229,18 @@ export const PricingProfileCreator: React.FC = () => {
       <div className="max-width-container">
         <div className="card">
           {/* Header */}
-          <div>
-            <h1>Create Pricing Profile</h1>
-            <p className="subtitle">Setup your pricing profile, select products and configure price adjustments</p>
-          </div>
+           <div className="logo-header">
+          <img 
+            src="https://www.foboh.com.au/assets/images/foboh-logo.svg" 
+            alt="FOBOH" 
+            className="logo"
+            onError={(e) => {
+              // Fallback if logo doesn't load
+              e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60"><text x="10" y="40" font-family="Arial" font-size="12" font-weight="bold" fill="%230d9488">FOBOH</text></svg>';
+            }}
+          />
+            <h1 className="header-title">Pricing Profile Creator</h1>
+        </div>
 
           {/* Error/Success Messages */}
           {error && (
