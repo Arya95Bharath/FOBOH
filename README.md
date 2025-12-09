@@ -31,7 +31,7 @@ This application allows suppliers to create custom pricing profiles for differen
 
 ---
 
-## ✨ Features
+##  Features
 
 ### Product Management
 -  Display 5 seeded wine products
