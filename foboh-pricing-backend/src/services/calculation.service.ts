@@ -19,8 +19,8 @@ export class CalculationService {
       newPrice = basedOnPrice + adjustment;
     }
 
-    // Prevent negative prices
-    if (newPrice < 0) {
+    // Prevent negative or zero prices
+    if (newPrice <= 0) {  // Changed from < to <=
       throw new Error('Calculated price cannot be negative. Adjustment value is too large.');
     }
 
