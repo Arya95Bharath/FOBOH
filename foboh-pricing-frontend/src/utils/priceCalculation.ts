@@ -29,6 +29,10 @@ export function formatCurrency(amount: number): string {
 }
 
 export function formatAdjustment(adjustment: number): string {
-  const sign = adjustment >= 0 ? '+' : '';
-  return `${sign}${formatCurrency(adjustment)}`;
+  if (adjustment >= 0) {
+    return `+$${adjustment.toFixed(2)}`;
+  } else {
+    // Fix: Put sign before the dollar sign
+    return `-$${Math.abs(adjustment).toFixed(2)}`;
+  }
 }
